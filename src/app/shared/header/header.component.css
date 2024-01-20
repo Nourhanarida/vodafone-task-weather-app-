@@ -1,0 +1,31 @@
+header{
+    padding: 20px 0;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 33;
+}
+.nav-bar li a{
+    padding: 20px;
+}
+ .the_logo{
+    width: 70px;
+    height: 70px;
+display: flex;
+}
+ .the_logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.the_logo .app-title{
+    text-transform: capitalize;
+    font-size: 20px;
+    color: var(--white);
+}
+
+header.home{
+    position: absolute;
+}

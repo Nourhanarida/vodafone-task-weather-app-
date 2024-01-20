@@ -1,0 +1,114 @@
+<app-header></app-header>
+<div class="sec-marg">
+        <div class="content">
+          <div class="container">
+              <div class="row align-items-center ">
+                <div class="col-lg-6 col-md-7 col-6">
+                  <div class="col-content">
+                    <h3 class=" font-20 "> Search for Weather :</h3>
+                     <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                      <div class="form-group">
+                        <input class="form-control" type="text" id="city"  aria-describedby="weatherLocation"
+                        placeholder="Please input a city" formControlName="cityId"
+                        />
+
+                        <div class="input-group my-db">
+                          <input
+                            class="form-control"
+                            placeholder="yyyy-mm-dd"
+                            name="dp"
+                            ngbDatepicker
+                            #d="ngbDatepicker"
+                            [minDate]="{year: 2023, month: 11 , day :23}"  [maxDate]="{year: 2023, month: 11 , day :27}"   
+                            (dateSelect)="onDateSelection($event)"  style="display: none;"
+                     
+
+                          />
+                          <button class="btn btn-outline-secondary bi bi-calendar3" 
+                          (click)="d.toggle()"  type="button"></button>
+                        </div>
+                        <!-- (dateSelect)="onDateSelection($event)" -->
+
+                        <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+                          <button
+                            type="button"
+                            class="btn temp-btn me-2"
+                            id="dropdownManual"
+                            ngbDropdownAnchor
+                            (focus)="myDrop.open()"
+                          >
+                            Temp Unit
+                          </button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                            <button type="button" ngbDropdownItem  (click)="tempInCels()">Temp in Celsius</button>
+                            <button type="button" ngbDropdownItem  (click)="tempInFehr()">Temp in Fahrenheit</button>
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn-main" >
+                        Search
+                      </button>
+                    </div>
+                  </form>
+
+                  </div>
+                
+                  </div>
+                  <div class="col-md-5 col-12">
+                    <div class="col-content" *ngIf="weatherData" >
+
+                      <h3 class="text-center font-20 my-4">Weather Details :</h3>
+                      <p> the city id is : <span>{{weatherData.id}}</span> </p>
+                      <p>The country name is  : <span>{{weatherData.city}}</span></p>
+                        
+
+                      <div class="row justify-content-center align-items-center">
+                        <div class=" col-md-10 col-12">
+                          <div *ngIf="newDate">
+                       
+                            <div class="details my-3"   >
+                        
+                              <p>The date is : <span>{{newDate }}</span></p>
+                              <p *ngIf="celsius">Degrees Celsius <span> {{tempCel }}</span></p>
+                              <p *ngIf="fehr"> Degrees Farenheit :<span>{{tempFeh }}</span></p>
+                              <p>humidity is :<span>{{humidity }}</span> </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class=" col-lg-6 col-md-6 col-12" *ngFor="let item of items">
+                          <div *ngIf="!newDate">
+                        
+                              <div class="details my-3 "   >
+                          
+                                <p>The date is : <span>{{item.date }}</span></p>
+                                <p *ngIf="celsius">Degrees Celsius <span> {{item.temperatureCelsius }}</span></p>
+                                <p *ngIf="fehr"> Degrees Farenheit :<span>{{item.temperatureCelsius }}</span></p>
+                                <p>humidity is :<span>{{item.humidity }}</span> </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                 
+  
+                    
+                       
+
+                      
+                        </div>
+                    
+                        
+                      
+                  </div>
+  
+                    
+                      </div>
+                  </div>
+              </div>
+                
+                   
+
+   
+</div>
+
